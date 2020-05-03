@@ -23,8 +23,7 @@ class App extends Component {
           ]
       return (
        <div className="container">
-         <div><h1>REACT app in development</h1></div>
-         <Table characterData={characters} />
+         <div><h1>Site under construction</h1></div>
        </div>
       )
     }
