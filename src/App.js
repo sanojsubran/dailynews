@@ -17,7 +17,6 @@ class App extends Component {
          <p>
           <a href="https://www.freepik.com/free-photos-vectors/technology">Technology vector created by upklyak - www.freepik.com</a>
          </p>
-         
        </div>
       )
     }
