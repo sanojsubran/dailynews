@@ -1,3 +1,36 @@
 .text {
-    font-size: 13px;
+    font-size: 1.2em;
+}
+
+.news {
+    white-space: normal; 
+    font-size: 11px;
+}
+
+.websiteTitle {
+    font-size: 3em;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: cornflowerblue;
+}
+
+.HN {
+    background-color: #ff6600;
+    color: white;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px 50px 5px 50px;
+}
+
+.containerr {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: cornflowerblue;
+}
+
+
+
+.warp {
+    padding:0%;
+    /*border-style: double;*/
 }
