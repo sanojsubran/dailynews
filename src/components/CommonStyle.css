@@ -11,26 +11,27 @@
     font-size: 3em;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: cornflowerblue;
+    color: #054fb5;
 }
 
-.HN {
-    background-color: #ff6600;
+.sourceTitle {
+    background-color: cornflowerblue;
     color: white;
     border-radius: 5px;
     text-align: left;
     padding: 5px 50px 5px 50px;
 }
 
-.containerr {
+.feedContainer {
     border-style: solid;
     border-radius: 5px;
     border-color: cornflowerblue;
 }
 
+.fixedContainer {
+    min-height: 300px;
+}
 
-
-.warp {
-    padding:0%;
-    /*border-style: double;*/
+.feedEntry {
+    min-height: 2.1em;
 }
