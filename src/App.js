@@ -52,8 +52,24 @@ const App = () => {
                     <FeedContainer newssource={react_dev} stories={stories} />
                 </div>
             </div>
+            <div className="websiteFooter">
+                <div>Copyright 2020</div>
+                <div>All rights reserved</div>
+                <div className="developerDetails">
+                    <label>Developed by : </label>
+                    <a 
+                        className="developerName" 
+                        href="https://sanoj.in" 
+                        target="blank" 
+                        rel="noopener noreferrer"
+                    >
+                        sanoj subran
+                    </a>
+                </div>
+                
+            </div>
+            
         </div>
-        
     );
 };
 

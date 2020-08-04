@@ -10,8 +10,20 @@
 .websiteTitle {
     font-size: 3em;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #054fb5;
+    font-family: 'Sora', sans-serif;
+    color: #ffffff;
+    background-color: rgb(101, 99, 231);
+
+}
+
+.websiteFooter {
+    text-align: center;
+    color: #ffffff;
+    background-color: rgb(101, 99, 231);
+    min-height: 50px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .sourceTitle {
@@ -29,9 +41,23 @@
 }
 
 .fixedContainer {
-    min-height: 300px;
+    min-height: 380px;
 }
 
 .feedEntry {
     min-height: 2.1em;
+}
+
+.developerDetails {
+    display: flex;
+    justify-content: center;
+    white-space: pre-wrap;
+}
+
+.developerName {
+    color : rgb(135, 202, 48);
+}
+
+.developerName:hover {
+    color : rgb(135, 202, 48);
 }

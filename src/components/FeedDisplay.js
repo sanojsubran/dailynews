@@ -12,7 +12,7 @@ const FeedDisplay = ({currentStories}) => {
         return (
             <div key={story.id} className="item news">
                 <div className="ui text feedEntry">
-                    <a href={story.url} target="blank" >{story.title}</a>
+                    <a href={story.url} target="blank" rel="noopener noreferrer">{story.title}</a>
                 </div>
             </div>
         );
