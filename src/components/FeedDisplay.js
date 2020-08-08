@@ -11,7 +11,7 @@ const FeedDisplay = ({currentStories}) => {
     const renderedStories = currentStories.map( story => {
         return (
             <div key={story.id} className="item news">
-                <div className="ui text feedEntry">
+                <div className="ui text feedEntry ">
                     <a href={story.url} target="blank" rel="noopener noreferrer">{story.title}</a>
                 </div>
             </div>

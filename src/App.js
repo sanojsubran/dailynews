@@ -4,8 +4,13 @@ import Axios from 'axios';
 import './components/CommonStyle.css';
 
 const App = () => {
-
-    const [stories, setStories] = useState([]);
+    const [hnstories, setHNStories] = useState([]);
+    const [rpgmstories, setRPGMStories] = useState([]);
+    const [rcppstories, setRCPPStories] = useState([]);
+    const [tcstories, setTCStories] = useState([]);
+    const [sdstories, setSDStories] = useState([]);
+    const [rdstories, setRDStories] = useState([]);
+    const [gdstories, setGDStories] = useState([]);
 
     const hacker_news   = "Hacker News";
     const reddit_pgm    = "Reddit/programming";
@@ -18,9 +23,15 @@ const App = () => {
 
     useEffect( () => {
         const fetchFeed = async () => {
-            const {data} = await Axios.get('https://api.techdigest.today/');
-            setStories(data);
-            console.log("Number of stories fetched: ", data.length);
+            const {data} = await Axios.get('https://api.tentaclehub.xyz/');
+            setHNStories(data.hacker_news)
+            setRPGMStories(data.reddit_pgm)
+            setRCPPStories(data.reddit_cpp)
+            setTCStories(data.techcrunch)
+            setSDStories(data.slashdot)
+            setRDStories(data.react_dev)
+            setGDStories(data.golang_dev)
+            //console.log("Number of stories fetched: ", data.length);
         };
         fetchFeed();
     },[]);
@@ -31,25 +42,62 @@ const App = () => {
             <br/>
             <div className="ui three column doubling stackable grid container ">
                 <div className="column">
-                    <FeedContainer newssource={hacker_news} source="" stories={stories} />
+                    <FeedContainer 
+                        newssource={hacker_news} 
+                        source="" 
+                        stories={hnstories}
+                        maxStories="30"
+                        pageMax="10"
+                    />
                 </div>
                 <div className="column">
-                    <FeedContainer newssource={reddit_pgm} stories={stories} />
+                    <FeedContainer 
+                        newssource={reddit_pgm} 
+                        stories={rpgmstories} 
+                        maxStories="30" 
+                        pageMax="10" 
+                    />
                 </div>
                 <div className="column">
-                    <FeedContainer newssource={reddit_cpp} stories={stories} />
+                    <FeedContainer 
+                        newssource={reddit_cpp} 
+                        stories={rcppstories} 
+                        maxStories="30" 
+                        pageMax="10" 
+                    />
                 </div>
                 <div className="column">
-                    <FeedContainer newssource={slashdot} stories={stories} />
+                    <FeedContainer 
+                        newssource={slashdot} 
+                        stories={sdstories} 
+                        maxStories="10" 
+                        pageMax="10" 
+                    />
                 </div>
                 <div className="column">
-                    <FeedContainer newssource={techcrunch} stories={stories} />
+                    <FeedContainer 
+                        newssource={techcrunch} 
+                        stories={tcstories} 
+                        maxStories="10"
+                        pageMax="10"
+                    />
                 </div>
                 <div className="column">
-                    <FeedContainer newssource={golang_dev} stories={stories} />
+                    <FeedContainer 
+                        newssource={golang_dev} 
+                        stories={gdstories} 
+                        maxStories="10"
+                        pageMax="10"
+                    />
                 </div>
                 <div className="column">
-                    <FeedContainer newssource={react_dev} stories={stories} />
+                    <FeedContainer 
+                        newssource={react_dev} 
+                        stories={rdstories} 
+                        maxStories="10"
+                        pageMax="10"
+
+                    />
                 </div>
             </div>
             <div className="websiteFooter">
@@ -66,9 +114,7 @@ const App = () => {
                         sanoj subran
                     </a>
                 </div>
-                
             </div>
-            
         </div>
     );
 };

@@ -16,6 +16,13 @@
 
 }
 
+
+.linkText{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+
 .websiteFooter {
     text-align: center;
     color: #ffffff;
