@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import FeedContainer from './components/FeedContainer';
 import Axios from 'axios';
+import ReactGA from 'react-ga';
 import './components/CommonStyle.css';
 
 const App = () => {
@@ -22,6 +23,8 @@ const App = () => {
     const website_title = "techdigest.today";
 
     useEffect( () => {
+        ReactGA.initialize('UA-175573390-1');
+        ReactGA.pageview(window.location.pathname + window.location.search);    
         const fetchFeed = async () => {
             const {data} = await Axios.get('https://api.tentaclehub.xyz/');
             setHNStories(data.hacker_news)
