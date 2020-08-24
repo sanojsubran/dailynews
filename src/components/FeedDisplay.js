@@ -19,8 +19,8 @@ const FeedDisplay = ({currentStories}) => {
         var title = reduceTitle(story.title);
         return (
             <div key={story.id} className="item news">
-                <div className="ui text feedEntry ">
-        <a href={story.url} target="blank" rel="noopener noreferrer ">{title}</a>
+                <div className="ui text feedEntry">
+                    <a href={story.url} target="blank" rel="noopener noreferrer ">{title}</a>
                 </div>
             </div>
         );

@@ -12,8 +12,7 @@
     text-align: center;
     font-family: 'Sora', sans-serif;
     color: #ffffff;
-    background-color: rgb(101, 99, 231);
-
+    background-color: firebrick;
 }
 
 
@@ -26,7 +25,7 @@
 .websiteFooter {
     text-align: center;
     color: #ffffff;
-    background-color: rgb(101, 99, 231);
+    background-color: firebrick;
     min-height: 50px;
     margin-top: 10px;
     padding-top: 10px;
@@ -34,7 +33,7 @@
 }
 
 .sourceTitle {
-    background-color: cornflowerblue;
+    background-color: gray;
     color: white;
     border-radius: 5px;
     text-align: left;
@@ -44,7 +43,8 @@
 .feedContainer {
     border-style: solid;
     border-radius: 5px;
-    border-color: cornflowerblue;
+    /*border-color: cornflowerblue;*/
+    border-color: gray;
 }
 
 .fixedContainer {
