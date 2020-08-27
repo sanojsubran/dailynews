@@ -42,7 +42,7 @@ const FeedContainer = ({newssource,stories,maxStories,pageMax}) => {
             <fieldset className="feedContainer">
                 <legend className="sourceTitle">{newssource}</legend>
                 <div className="ui feedUI">
-                    <div className="fixedContainer">
+                    <div className="ui fixedContainer">
                         <FeedDisplay currentStories={displayStories}/>
                     </div>
                     <div className="two ui fluid buttons bottomWidget"> 
