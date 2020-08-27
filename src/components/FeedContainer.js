@@ -39,19 +39,19 @@ const FeedContainer = ({newssource,stories,maxStories,pageMax}) => {
     },[stories, pageMax]);
 
     return(
-        <div className="ui">
             <fieldset className="feedContainer">
                 <legend className="sourceTitle">{newssource}</legend>
-                <div className="fixedContainer">
-                    <FeedDisplay currentStories={displayStories}/>
-                </div>
-                <div className="two ui fluid buttons bottomWidget"> 
-                    <button className="ui  button " onClick={() => onClickPrevious()}>Previous</button>
-                    <div className="or" data-text={`${currentPage}/${maxPages}`}></div>
-                    <button id="next" className="ui  button" onClick={() => onClickNext()} >Next</button>
+                <div className="ui feedUI">
+                    <div className="fixedContainer">
+                        <FeedDisplay currentStories={displayStories}/>
+                    </div>
+                    <div className="two ui fluid buttons bottomWidget"> 
+                        <button className="ui  button " onClick={() => onClickPrevious()}>Previous</button>
+                        <div className="or" data-text={`${currentPage}/${maxPages}`}></div>
+                        <button id="next" className="ui  button" onClick={() => onClickNext()} >Next</button>
+                    </div>
                 </div>
             </fieldset>
-        </div>
     );
 };
 

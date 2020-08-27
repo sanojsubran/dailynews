@@ -24,6 +24,20 @@ const FeedEntryPlaceholder = () => {
               <div className="line"></div>
               <div className="line"></div>
             </div>
+            <div className="paragraph">
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
+            <div className="paragraph">
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
         </div>
     );
 };

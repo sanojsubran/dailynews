@@ -43,64 +43,69 @@ const App = () => {
         <div>
             <h1 className="websiteTitle">{website_title}</h1>
             <br/>
-            <div className="ui three column doubling stackable grid container ">
-                <div className="column">
-                    <FeedContainer 
-                        newssource={hacker_news} 
-                        source="" 
-                        stories={hnstories}
-                        maxStories="30"
-                        pageMax="10"
-                    />
+            <div className="ui three column doubling stackable grid container">
+                <div className= "stretched row">
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={hacker_news} 
+                            source="" 
+                            stories={hnstories}
+                            maxStories="30"
+                            pageMax="10"
+                        />
+                    </div>
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={reddit_pgm} 
+                            stories={rpgmstories} 
+                            maxStories="30" 
+                            pageMax="10" 
+                        />
+                    </div>
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={reddit_cpp} 
+                            stories={rcppstories} 
+                            maxStories="30" 
+                            pageMax="10" 
+                        />
+                    </div>
                 </div>
-                <div className="column">
-                    <FeedContainer 
-                        newssource={reddit_pgm} 
-                        stories={rpgmstories} 
-                        maxStories="30" 
-                        pageMax="10" 
-                    />
+                <div className= "stretched row">
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={slashdot} 
+                            stories={sdstories} 
+                            maxStories="10" 
+                            pageMax="10" 
+                        />
+                    </div>
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={techcrunch} 
+                            stories={tcstories} 
+                            maxStories="10"
+                            pageMax="10"
+                        />
+                    </div>
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={golang_dev} 
+                            stories={gdstories} 
+                            maxStories="10"
+                            pageMax="10"
+                        />
+                    </div>    
                 </div>
-                <div className="column">
-                    <FeedContainer 
-                        newssource={reddit_cpp} 
-                        stories={rcppstories} 
-                        maxStories="30" 
-                        pageMax="10" 
-                    />
-                </div>
-                <div className="column">
-                    <FeedContainer 
-                        newssource={slashdot} 
-                        stories={sdstories} 
-                        maxStories="10" 
-                        pageMax="10" 
-                    />
-                </div>
-                <div className="column">
-                    <FeedContainer 
-                        newssource={techcrunch} 
-                        stories={tcstories} 
-                        maxStories="10"
-                        pageMax="10"
-                    />
-                </div>
-                <div className="column">
-                    <FeedContainer 
-                        newssource={golang_dev} 
-                        stories={gdstories} 
-                        maxStories="10"
-                        pageMax="10"
-                    />
-                </div>
-                <div className="column">
-                    <FeedContainer 
-                        newssource={react_dev} 
-                        stories={rdstories} 
-                        maxStories="10"
-                        pageMax="10"
-
-                    />
+                <div className= "stretched row">
+                    <div className="column">
+                        <FeedContainer 
+                            newssource={react_dev} 
+                            stories={rdstories} 
+                            maxStories="10"
+                            pageMax="10"
+                        />
+                    </div>    
                 </div>
             </div>
             <div className="websiteFooter">

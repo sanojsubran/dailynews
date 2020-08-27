@@ -4,7 +4,7 @@ import './CommonStyle.css';
 
 function reduceTitle(title) {
     var wordArray = title.split(' ');
-    wordArray = wordArray.length > 11 ?wordArray.splice(0,13).join(' ') + '\ ...'
+    wordArray = wordArray.length > 11 ?wordArray.splice(0,13).join(' ') + ' ...'
         : wordArray.join(' ');
     return wordArray;
 }
