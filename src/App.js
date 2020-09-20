@@ -26,7 +26,7 @@ const App = () => {
         ReactGA.initialize('UA-175573390-1');
         ReactGA.pageview(window.location.pathname + window.location.search);    
         const fetchFeed = async () => {
-            const {data} = await Axios.get('https://api.tentaclehub.xyz/');
+            const {data} = await Axios.get('https://api.techdigest.today/');
             setHNStories(data.hacker_news)
             setRPGMStories(data.reddit_pgm)
             setRCPPStories(data.reddit_cpp)
