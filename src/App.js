@@ -88,24 +88,14 @@ const App = () => {
                             pageMax="10"
                         />
                     </div>
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={golang_dev} 
-                            stories={gdstories} 
-                            maxStories="10"
-                            pageMax="10"
-                        />
-                    </div>    
-                </div>
-                <div className= "stretched row">
-                    <div className="column">
+                    <div className= "column">
                         <FeedContainer 
                             newssource={react_dev} 
                             stories={rdstories} 
                             maxStories="10"
                             pageMax="10"
                         />
-                    </div>    
+                    </div>
                 </div>
             </div>
             <div className="websiteFooter">
