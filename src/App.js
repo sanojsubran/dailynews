@@ -24,9 +24,9 @@ const App = () => {
 
     useEffect( () => {
         ReactGA.initialize('UA-175573390-1');
-        ReactGA.pageview(window.location.pathname + window.location.search);    
+        ReactGA.pageview(window.location.pathname + window.location.search);
         const fetchFeed = async () => {
-            const {data} = await Axios.get('https://api.techdigest.today/');
+            const {data} = await Axios.get('http://localhost:8081/');
             setHNStories(data.hacker_news)
             setRPGMStories(data.reddit_pgm)
             setRCPPStories(data.reddit_cpp)
@@ -46,55 +46,30 @@ const App = () => {
             <div className="ui three column doubling stackable grid container">
                 <div className= "stretched row">
                     <div className="column">
-                        <FeedContainer 
-                            newssource={hacker_news} 
-                            source="" 
+                        <FeedContainer
+                            newssource={hacker_news}
+                            source=""
                             stories={hnstories}
                             maxStories="30"
                             pageMax="10"
                         />
                     </div>
                     <div className="column">
-                        <FeedContainer 
-                            newssource={reddit_pgm} 
-                            stories={rpgmstories} 
-                            maxStories="30" 
-                            pageMax="10" 
-                        />
-                    </div>
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={reddit_cpp} 
-                            stories={rcppstories} 
-                            maxStories="30" 
-                            pageMax="10" 
-                        />
-                    </div>
-                </div>
-                <div className= "stretched row">
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={slashdot} 
-                            stories={sdstories} 
-                            maxStories="10" 
-                            pageMax="10" 
-                        />
-                    </div>
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={techcrunch} 
-                            stories={tcstories} 
+                        <FeedContainer
+                            newssource={techcrunch}
+                            stories={tcstories}
                             maxStories="10"
                             pageMax="10"
                         />
                     </div>
-                    <div className= "column">
-                        <FeedContainer 
-                            newssource={react_dev} 
-                            stories={rdstories} 
-                            maxStories="10"
-                            pageMax="10"
-                        />
+                    <div className="column">
+                            <FeedContainer
+                                newssource={slashdot}
+                                stories={sdstories}
+                                maxStories="10"
+                                pageMax="10"
+                            />
+
                     </div>
                 </div>
             </div>
@@ -103,10 +78,10 @@ const App = () => {
                 <div>All rights reserved</div>
                 <div className="developerDetails">
                     <label>Developed by : </label>
-                    <a 
-                        className="developerName" 
-                        href="https://sanoj.in" 
-                        target="blank" 
+                    <a
+                        className="developerName"
+                        href="https://sanoj.in"
+                        target="blank"
                         rel="noopener noreferrer"
                     >
                         sanoj subran
