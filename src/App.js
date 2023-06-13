@@ -10,8 +10,6 @@ const App = () => {
     const [rcppstories, setRCPPStories] = useState([]);
     const [tcstories, setTCStories] = useState([]);
     const [sdstories, setSDStories] = useState([]);
-    const [rdstories, setRDStories] = useState([]);
-    const [gdstories, setGDStories] = useState([]);
 
     const hacker_news   = "Hacker News";
     const reddit_pgm    = "Reddit/programming";
@@ -26,14 +24,12 @@ const App = () => {
         ReactGA.initialize('UA-175573390-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
         const fetchFeed = async () => {
-            const {data} = await Axios.get('http://localhost:8081/');
+            const {data} = await Axios.get('https://api.techdigest.today/');
             setHNStories(data.hacker_news)
             setRPGMStories(data.reddit_pgm)
             setRCPPStories(data.reddit_cpp)
             setTCStories(data.techcrunch)
             setSDStories(data.slashdot)
-            setRDStories(data.react_dev)
-            setGDStories(data.golang_dev)
             //console.log("Number of stories fetched: ", data.length);
         };
         fetchFeed();

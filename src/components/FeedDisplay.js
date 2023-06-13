@@ -3,7 +3,7 @@ import FeedEntryPlaceholder from './FeedEntryPlaceholder';
 import './CommonStyle.css';
 
 function reduceTitle(title) {
-    var wordArray = title.split(' ');
+    let wordArray = title.split(' ');
     wordArray = wordArray.length > 10 ?wordArray.splice(0,13).join(' ') + ' ...'
         : wordArray.join(' ');
     return wordArray;
@@ -16,7 +16,7 @@ const FeedDisplay = ({currentStories}) => {
         );
     }
     const renderedStories = currentStories.map( story => {
-        var title = reduceTitle(story.title);
+        const title = reduceTitle(story.title);
         return (
             <div key={story.id} className="item news">
                 <div className="ui text feedEntry">
