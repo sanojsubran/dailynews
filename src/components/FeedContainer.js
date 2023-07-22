@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import FeedDisplay from './FeedDisplay';
 import './CommonStyle.css';
+
+import React, { useEffect, useState } from 'react';
+
+import FeedDisplay from './FeedDisplay';
 
 const FeedContainer = ({newssource,stories,maxStories,pageMax}) => {
     const [totalStories, setTotalStories] = useState([]);
@@ -25,13 +27,13 @@ const FeedContainer = ({newssource,stories,maxStories,pageMax}) => {
 
     useEffect( () => {
         const index = (currentPage - 1) * pageMax;
-        console.log("Page max is ", pageMax)
-        console.log(index, index + pageMax)
+        //console.log("Page max is ", pageMax)
+        //console.log(index, index + pageMax)
         setDisplayStories(totalStories.slice(index, index+pageMax));
     }, [currentPage, totalStories,pageMax]);
     
     useEffect(() => {
-        if(stories.length !== 0) {
+        if( stories !== undefined && stories.length !== 0) {
             setTotalStories(stories);
             setCurrentPage(1);
             setDisplayStories(stories.slice(0, pageMax));

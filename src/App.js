@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import FeedContainer from './components/FeedContainer';
-import Axios from 'axios';
-import ReactGA from 'react-ga';
 import './components/CommonStyle.css';
+
+import React, {useEffect, useState} from 'react';
+
+import FeedContainer from './components/FeedContainer';
+import ReactGA from 'react-ga';
+import axios from 'axios';
 
 const App = () => {
     const [hnstories, setHNStories] = useState([]);
@@ -23,11 +25,14 @@ const App = () => {
     useEffect( () => {
         ReactGA.initialize('UA-175573390-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
+        const backendUrl = process.env.REACT_APP_BACKEND_API
         const fetchFeed = async () => {
-            const {data} = await Axios.get('https://api.techdigest.today/');
-            setHNStories(data.hacker_news)
-            setRPGMStories(data.reddit_pgm)
-            setRCPPStories(data.reddit_cpp)
+            const {data} = await axios.get(backendUrl, {
+                responseType: "json",
+              });
+            setHNStories(data.hackernews)
+            //setRPGMStories(data.reddit_pgm)
+            //setRCPPStories(data.reddit_cpp)
             setTCStories(data.techcrunch)
             setSDStories(data.slashdot)
             //console.log("Number of stories fetched: ", data.length);
