@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import FeedContainer from './components/FeedContainer';
-import Axios from 'axios';
-import ReactGA from 'react-ga';
 import './components/CommonStyle.css';
+
+import React, {useEffect, useState} from 'react';
+
+import FeedContainer from './components/FeedContainer';
+import ReactGA from 'react-ga';
+import axios from 'axios';
 
 const App = () => {
     const [hnstories, setHNStories] = useState([]);
@@ -10,8 +12,6 @@ const App = () => {
     const [rcppstories, setRCPPStories] = useState([]);
     const [tcstories, setTCStories] = useState([]);
     const [sdstories, setSDStories] = useState([]);
-    const [rdstories, setRDStories] = useState([]);
-    const [gdstories, setGDStories] = useState([]);
 
     const hacker_news   = "Hacker News";
     const reddit_pgm    = "Reddit/programming";
@@ -24,16 +24,17 @@ const App = () => {
 
     useEffect( () => {
         ReactGA.initialize('UA-175573390-1');
-        ReactGA.pageview(window.location.pathname + window.location.search);    
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        const backendUrl = process.env.REACT_APP_BACKEND_API
         const fetchFeed = async () => {
-            const {data} = await Axios.get('https://api.techdigest.today/');
-            setHNStories(data.hacker_news)
-            setRPGMStories(data.reddit_pgm)
-            setRCPPStories(data.reddit_cpp)
+            const {data} = await axios.get(backendUrl, {
+                responseType: "json",
+              });
+            setHNStories(data.hackernews)
+            //setRPGMStories(data.reddit_pgm)
+            //setRCPPStories(data.reddit_cpp)
             setTCStories(data.techcrunch)
             setSDStories(data.slashdot)
-            setRDStories(data.react_dev)
-            setGDStories(data.golang_dev)
             //console.log("Number of stories fetched: ", data.length);
         };
         fetchFeed();
@@ -46,55 +47,30 @@ const App = () => {
             <div className="ui three column doubling stackable grid container">
                 <div className= "stretched row">
                     <div className="column">
-                        <FeedContainer 
-                            newssource={hacker_news} 
-                            source="" 
+                        <FeedContainer
+                            newssource={hacker_news}
+                            source=""
                             stories={hnstories}
                             maxStories="30"
                             pageMax="10"
                         />
                     </div>
                     <div className="column">
-                        <FeedContainer 
-                            newssource={reddit_pgm} 
-                            stories={rpgmstories} 
-                            maxStories="30" 
-                            pageMax="10" 
-                        />
-                    </div>
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={reddit_cpp} 
-                            stories={rcppstories} 
-                            maxStories="30" 
-                            pageMax="10" 
-                        />
-                    </div>
-                </div>
-                <div className= "stretched row">
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={slashdot} 
-                            stories={sdstories} 
-                            maxStories="10" 
-                            pageMax="10" 
-                        />
-                    </div>
-                    <div className="column">
-                        <FeedContainer 
-                            newssource={techcrunch} 
-                            stories={tcstories} 
+                        <FeedContainer
+                            newssource={techcrunch}
+                            stories={tcstories}
                             maxStories="10"
                             pageMax="10"
                         />
                     </div>
-                    <div className= "column">
-                        <FeedContainer 
-                            newssource={react_dev} 
-                            stories={rdstories} 
-                            maxStories="10"
-                            pageMax="10"
-                        />
+                    <div className="column">
+                            <FeedContainer
+                                newssource={slashdot}
+                                stories={sdstories}
+                                maxStories="10"
+                                pageMax="10"
+                            />
+
                     </div>
                 </div>
             </div>
@@ -103,10 +79,10 @@ const App = () => {
                 <div>All rights reserved</div>
                 <div className="developerDetails">
                     <label>Developed by : </label>
-                    <a 
-                        className="developerName" 
-                        href="https://sanoj.in" 
-                        target="blank" 
+                    <a
+                        className="developerName"
+                        href="https://sanoj.in"
+                        target="blank"
                         rel="noopener noreferrer"
                     >
                         sanoj subran
