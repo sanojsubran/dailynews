@@ -26,14 +26,11 @@
     text-align: center;
     color: #ffffff;
     background-image: linear-gradient(rgba(214, 32, 0, 0.959), firebrick 50%);
-    min-height: 50px;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+
 }
 
 .sourceTitle {
-    background-color: gray;
+    background-color: rgb(128, 128, 128);
     color: white;
     border-radius: 5px;
     text-align: left;
@@ -43,7 +40,7 @@
 .feedContainer {
     border-style: solid;
     border-radius: 5px;
-    border-color: gray;
+    border-color: rgb(128, 128, 128);
 }
 
 .fixedContainer {
