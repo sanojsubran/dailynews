@@ -2,34 +2,21 @@ import React from 'react';
 import FeedEntryPlaceholder from './FeedEntryPlaceholder';
 import './CommonStyle.css';
 
-function reduceTitle(title) {
-    let wordArray = title.split(' ');
-    wordArray = wordArray.length > 10 ?wordArray.splice(0,13).join(' ') + ' ...'
-        : wordArray.join(' ');
-    return wordArray;
-}
-
-const FeedDisplay = ({currentStories}) => {
-    if(currentStories.length === 0) {
-        return (
-            <FeedEntryPlaceholder />
-        );
+const FeedDisplay = ({ currentStories }) => {
+    if (currentStories.length === 0) {
+        return <FeedEntryPlaceholder />;
     }
-    const renderedStories = currentStories.map( story => {
-        const title = reduceTitle(story.title);
-        return (
-            <div key={story.id} className="item news">
-                <div className="ui text feedEntry">
-                    <a href={story.url} target="blank" rel="noopener noreferrer ">{title}</a>
-                </div>
-            </div>
-        );
-    } );
 
     return (
-        <div className="ui relaxed divided list ">
-            {renderedStories}
-        </div>
+        <ol className="storyList">
+            {currentStories.map(story => (
+                <li key={story.id} className="storyItem">
+                    <a href={story.url} target="_blank" rel="noopener noreferrer">
+                        {story.title}
+                    </a>
+                </li>
+            ))}
+        </ol>
     );
 };
 

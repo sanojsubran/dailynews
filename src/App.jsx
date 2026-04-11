@@ -1,80 +1,92 @@
 import './components/CommonStyle.css';
 
-import React, {useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from 'react';
 import FeedContainer from './components/FeedContainer';
 import ReactGA from 'react-ga4';
 import axios from 'axios';
 
+const getInitialTheme = () => {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
 const App = () => {
     const [hnstories, setHNStories] = useState([]);
-    const [rpgmstories, setRPGMStories] = useState([]);
-    const [rcppstories, setRCPPStories] = useState([]);
     const [tcstories, setTCStories] = useState([]);
     const [sdstories, setSDStories] = useState([]);
+    const [theme, setTheme] = useState(getInitialTheme);
+    const [error, setError] = useState(false);
 
-    const hacker_news   = "Hacker News";
-    const reddit_pgm    = "Reddit/programming";
-    const reddit_cpp    = "Reddit/cpp";
-    const slashdot      = "Slashdot";
-    const techcrunch    = "Tech Crunch";
-    const golang_dev    = "Golang/dev";
-    const react_dev     = "React/dev";
-    const website_title = "techdigest.today";
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
-    useEffect( () => {
+    useEffect(() => {
         ReactGA.initialize('UA-175573390-1');
         ReactGA.send({ hitType: 'pageview', page: window.location.pathname + window.location.search });
-        const backendUrl = process.env.REACT_APP_BACKEND_API
+        const backendUrl = process.env.REACT_APP_BACKEND_API;
         const fetchFeed = async () => {
-            const {data} = await axios.get(backendUrl, {
-                responseType: "json",
-              });
-            setHNStories(data.hackernews)
-            //setRPGMStories(data.reddit_pgm)
-            //setRCPPStories(data.reddit_cpp)
-            setTCStories(data.techcrunch)
-            setSDStories(data.slashdot)
-            //console.log("Number of stories fetched: ", data.length);
+            try {
+                const { data } = await axios.get(backendUrl, { responseType: 'json' });
+                setHNStories(data.hackernews);
+                setTCStories(data.techcrunch);
+                setSDStories(data.slashdot);
+            } catch {
+                setError(true);
+            }
         };
         fetchFeed();
-    },[]);
+    }, []);
+
+    const toggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light');
 
     return (
-        <div>
-            <h1 className="websiteTitle">{website_title}</h1>
-            <br/>
-            <div className="ui three column doubling stackable grid container">
-                <div className= "stretched row">
-                    <div className="column">
+        <div className="appWrapper">
+            <header className="titleBar">
+                <h1 className="websiteTitle">techdigest.today</h1>
+                <label className="themeToggle">
+                    <span className="themeLabel">Light</span>
+                    <input
+                        type="checkbox"
+                        checked={theme === 'dark'}
+                        onChange={toggleTheme}
+                    />
+                    <span className="themeSlider" />
+                    <span className="themeLabel">Dark</span>
+                </label>
+            </header>
+
+            <main className="feedGrid">
+                {error ? (
+                    <div className="errorState">
+                        Unable to load feeds. Please try again later.
+                    </div>
+                ) : (
+                    <>
                         <FeedContainer
-                            newssource={hacker_news}
-                            source=""
+                            newssource="Hacker News"
                             stories={hnstories}
                             maxStories="30"
                             pageMax="10"
                         />
-                    </div>
-                    <div className="column">
                         <FeedContainer
-                            newssource={techcrunch}
+                            newssource="TechCrunch"
                             stories={tcstories}
                             maxStories="10"
                             pageMax="10"
                         />
-                    </div>
-                    <div className="column">
-                            <FeedContainer
-                                newssource={slashdot}
-                                stories={sdstories}
-                                maxStories="10"
-                                pageMax="10"
-                            />
-
-                    </div>
-                </div>
-            </div>
-            </div>
+                        <FeedContainer
+                            newssource="Slashdot"
+                            stories={sdstories}
+                            maxStories="10"
+                            pageMax="10"
+                        />
+                    </>
+                )}
+            </main>
+        </div>
     );
 };
 
