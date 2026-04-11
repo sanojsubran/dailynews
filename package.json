@@ -17,6 +17,9 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
