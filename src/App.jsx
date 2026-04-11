@@ -3,7 +3,7 @@ import './components/CommonStyle.css';
 import React, {useEffect, useState} from 'react';
 
 import FeedContainer from './components/FeedContainer';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import axios from 'axios';
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
 
     useEffect( () => {
         ReactGA.initialize('UA-175573390-1');
-        ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.send({ hitType: 'pageview', page: window.location.pathname + window.location.search });
         const backendUrl = process.env.REACT_APP_BACKEND_API
         const fetchFeed = async () => {
             const {data} = await axios.get(backendUrl, {
